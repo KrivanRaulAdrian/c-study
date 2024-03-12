@@ -1,5 +1,7 @@
 #include <stdio.h>
 
+int add(int num1, int num2);
+
 int main(void)
 {
     long int x;
@@ -68,5 +70,32 @@ int main(void)
     double e = (double)c / (double)d;
     printf("%.20f\n", e);
 
+    printf("\n");
+
+    int num1;
+    printf("num1: ");
+    while (scanf("%i", &num1) != 1)
+    {
+        printf("Invalid input. Please enter a number: ");
+        while (getchar() != '\n')
+            ;
+    }
+
+    int num2;
+    printf("num2: ");
+    while (scanf("%i", &num2) != 1)
+    {
+        printf("Invalid input. Please enter a number: ");
+        while (getchar() != '\n')
+            ;
+    }
+
+    printf("sum: %i\n", add(num1, num2));
+
     return 0;
+}
+
+int add(int num1, int num2)
+{
+    return num1 + num2;
 }
