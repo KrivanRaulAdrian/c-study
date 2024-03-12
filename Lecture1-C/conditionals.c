@@ -3,11 +3,11 @@
 int main(void)
 {
     int x;
-    printf("What is x? ");
+    printf("What's x? ");
     scanf("%u", &x);
 
     int y;
-    printf("What is y? ");
+    printf("What's y? ");
     scanf("%u", &y);
 
     if (x < y)
