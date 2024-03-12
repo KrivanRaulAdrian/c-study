@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <ctype.h>
 
 void get_agreement();
 
@@ -13,14 +14,29 @@ void get_agreement()
 {
     char c;
     printf("Do you agree? ");
-    scanf("%c", &c);
 
-    if (c == 'y' || c == 'Y')
+    while (1)
     {
-        printf("Agreed.\n");
-    }
-    else if (c == 'n' || c == 'N')
-    {
-        printf("Not agreed.\n");
+        scanf(" %c", &c);
+
+        c = toupper(c);
+
+        if (c == 'Y')
+        {
+            printf("Agreed.\n");
+            break;
+        }
+        else if (c == 'N')
+        {
+            printf("Not agreed.\n");
+            break;
+        }
+        else
+        {
+            printf("Invalid input. Please enter 'y' or 'n': ");
+
+            while (getchar() != '\n')
+                ;
+        }
     }
 }

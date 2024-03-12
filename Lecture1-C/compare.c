@@ -13,11 +13,21 @@ void compare()
 {
     int x;
     printf("What is x? \n");
-    scanf("%u", &x);
+    while (scanf("%u", &x) != 1)
+    {
+        printf("Invalid input. Please enter a number: ");
+        while (getchar() != '\n')
+            ;
+    }
 
     int y;
     printf("What is y? \n");
-    scanf("%u", &y);
+    while (scanf("%u", &y) != 1)
+    {
+        printf("Invalid input. Please enter a number: ");
+        while (getchar() != '\n')
+            ;
+    }
 
     if (x < y)
     {

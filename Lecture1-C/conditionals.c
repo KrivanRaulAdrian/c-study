@@ -4,11 +4,21 @@ int main(void)
 {
     int x;
     printf("What's x? ");
-    scanf("%u", &x);
+    while (scanf("%u", &x) != 1)
+    {
+        printf("Invalid input. Please enter a number: ");
+        while (getchar() != '\n')
+            ;
+    }
 
     int y;
     printf("What's y? ");
-    scanf("%u", &y);
+    while (scanf("%u", &y) != 1)
+    {
+        printf("Invalid input. Please enter a number: ");
+        while (getchar() != '\n')
+            ;
+    }
 
     if (x < y)
     {
