@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdbool.h>
 
+void meow(void);
+
 int main(void)
 {
     int i = 0;
@@ -14,7 +16,7 @@ int main(void)
 
     for (int j = 0; j < 3; j++)
     {
-        printf("meow\n");
+        meow();
     }
 
     printf("\n");
@@ -25,4 +27,9 @@ int main(void)
     }
 
     return 0;
+}
+
+void meow(void)
+{
+    printf("Meow!\n");
 }
