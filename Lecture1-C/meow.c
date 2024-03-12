@@ -2,6 +2,7 @@
 #include <stdbool.h>
 
 void meow(void);
+void meow_meow(int n);
 
 int main(void)
 {
@@ -26,10 +27,20 @@ int main(void)
         printf("meow\n");
     }
 
+    meow_meow(5);
+
     return 0;
 }
 
 void meow(void)
 {
     printf("Meow!\n");
+}
+
+void meow_meow(int n)
+{
+    for (int i = 0; i < n; i++)
+    {
+        printf("Meow, Meow!\n");
+    }
 }
