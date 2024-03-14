@@ -1,5 +1,7 @@
 #include <stdio.h>
 
+float average(int length, int array[]);
+
 int main(void)
 {
     const int N = 3;
@@ -15,7 +17,17 @@ int main(void)
         }
     }
 
-    printf("Average: %f\n", (scores[0] + scores[1] + scores[2]) / (float)N);
+    printf("Average: %f\n", average(N, scores));
 
     return 0;
+}
+
+float average(int length, int array[])
+{
+    int sum = 0;
+    for (int i = 0; i < length; i++)
+    {
+        sum += array[i];
+    }
+    return sum / (float)length;
 }
