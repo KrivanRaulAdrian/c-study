@@ -61,6 +61,18 @@
 - The string data type is used for variables that will store a series of characters, which programmers typically call a string.
 - Strings include things such as words, sentences, paragraphs, and the like.
 
+## Data types and size
+
+| Data Type | Size (Bytes) |
+| --------- | ------------ |
+| bool      | 1            |
+| int       | 4            |
+| long      | 8            |
+| float     | 4            |
+| double    | 8            |
+| char      | 1            |
+| string    | ?            |
+
 ## Creating a variable
 
 - To bring a variable into existence, you need simply specify the data type of the variable and give it a name.
