@@ -4,19 +4,7 @@ int main(void)
 {
     char answer[10];
     printf("What's your name? ");
-    while (1)
-    {
-        if (scanf("%9s", answer) != 1 || getchar() != '\n')
-        {
-            printf("Invalid input. Please enter a name: ");
-            while (getchar() != '\n')
-                ;
-        }
-        else
-        {
-            break;
-        }
-    }
+    scanf("%9s", answer);
 
     printf("Hello, %s!\n", answer);
 
