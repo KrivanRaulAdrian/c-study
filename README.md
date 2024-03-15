@@ -381,3 +381,183 @@ for (int i = 0; i < 10; i++)
 ### for
 
 - Use when you want a loop to repeat a discrete number of times, though you may not know the number at the moment the program is compiled.
+
+## C Functions:
+
+- So far, all the programs we've been writing in the course have been written inside of main().
+- That hasn't been a problem yet, but it could be if our programs start to become unwieldy.
+- C and nearly all langauges developed since allow us to write `functions`, sometimes also known as `procedures, methods`, or `subroutines`.
+- What is a function?
+  - A `black box` with a set of 0+ inputs and 1 output.
+- Why call it a `black box`?
+
+  - If we aren't writing the functions ourselves, we don't need to know the underlying implementation.
+
+```c
+mult(a, b):
+    output a * b
+
+    or
+
+mult(a, b):
+    set counter to 0
+    repeat b times
+        add a to counter
+    output counter
+```
+
+- That's part of the contract of using functions. The behavior is typically predictable based on that name. That's why most functions have clear, obvious(ish) names, and are well-documented.
+
+- Why use functions?
+
+  - Organization
+    - Functions help break up a complicated problem into more manageable subparts.
+  - Simplification
+    - Smaller components tend to be easier to design, implement, and debug.
+  - Reusability
+    - Functions can be recycled; you only need to write them once, but can use them as often as you need!
+
+- Function Declarations
+
+  - The first step to creating a function is to declare it. This gives the compiler a heads-up that a user-written functions appears in the code.
+  - Function declarations should always go atop your code, before you begin writing main().
+  - There is a standard form that every function declaration follows.
+
+```c
+return-type name(argument-list);
+```
+
+- The `return-type` is what kind of variable the function will output.
+- The `name` is what you want to call your function.
+- The `argument-list` is the comma-separated set of inputs to your function, each of which has a type and a name.
+
+- A function to add two integers.
+
+```c
+int add_two_ints(int a, int b);
+```
+
+- The sum of two integers is going to be an integer as well.
+- Given what this function does, make sure to give it an appropriate name.
+- There are two inputs to this function, and we need to give a name to each of them for purpose of the function. There's nothing important about these inputs as far as we know, so giving them simple names is okay.
+
+- A function to multiply two floating point numbers.
+
+```c
+float mult_two_reals(float x, float y);
+
+double mult_two_reals(double x, double y);
+```
+
+- The product of two floating point numbers is also a floating point number.
+- Let's be sure to give this a relevant name.
+- Again, the names of these particular inputs don't seem to be important, so we can call them anything simple.
+
+- Function Definitions
+
+  - The second step to creating a function is to define it. This allows for predictable behavior when the function is called with inputs.
+  - Let's try to define mult_two_reals(), from a moment ago.
+
+- A function definition looks `almost` identical to a function declaration, with a small change.
+
+```c
+float mult_two_reals(float x, float y);
+
+float mult_two_reals(float x, float y)
+{
+    float product = x * y;
+    return product;
+}
+
+float mult_two_reals(float x, float y)
+{
+    return x * y;
+}
+```
+
+```c
+int add_two_ints(int a, int b);
+
+int add_two_ints(int a, int b)
+{
+    int sum;      // declare variable
+    sum = a + b;  //  calculate the sum
+    return sum;   // give result back
+}
+
+int add_two_ints(int a, int b)
+{
+    int sum = a + b; // calc variable
+    return sum;      // give result back
+}
+
+int add_two_ints(int a, int b)
+{
+    return a + b;
+}
+```
+
+- Function calls
+
+  - Now that you've created a function, time to use it!
+  - To call a function, simply pass it appropriate arguments and assign its return value to something of the correct type.
+  - To ilustrate this, let's have a look at adder-1c.c
+
+```c
+#include <stdio.h>
+
+int add_two_ints(int a, int b);
+
+int main(void)
+{
+    int x;
+    printf("Give me an integer: ");
+    while(scanf("%i", &x) != 1)
+    {
+        printf("Invalid input. Please enter a number: ");
+        while(getchar() != '\n');
+    }
+
+    int y;
+    printf("Give me another integer: ");
+    while(scanf("%i", &y) != 1)
+    {
+        printf("Invalid input. Please enter a number: ");
+        while(getchar() != '\n');
+    }
+
+    int z = add_two_ints(x, y);
+
+    printf("The sum of %i and %i is %i!\n", x, y, z);
+}
+
+int add_two_ints(int a, int b)
+{
+    int sum = a + b;
+    return sum;
+}
+```
+
+- Function Miscellany
+
+  - Recall from our discussion of data types that functions can sometimes take no inputs. In that case, we declare the function as having a void argument list.
+  - Recall also that functions sometimes do not have an output. In that case, we declare the function as having a void return type.
+
+```c
+bool valid_triangle(float x, float y, float z);
+
+bool valid_triangle(float x, float y, float z)
+{
+    if (x <= 0 || y <= 0 || z <= 0)
+    {
+        return false;
+    }
+
+    if ((x + y <= z) || (x + z <= y) || (y + z <= x))
+    {
+        return false;
+    }
+
+    return true;
+}
+```
