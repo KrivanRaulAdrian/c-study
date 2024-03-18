@@ -1,6 +1,6 @@
 # C
 
-## C Data Types
+## Data Types
 
 ### int
 
@@ -109,7 +109,7 @@ int number = 17;   // initializing
 char letter = 'H';   // initializing
 ```
 
-## C Operators:
+## Operators
 
 Arithmetic Operators
 
@@ -189,7 +189,7 @@ x--;
   - Inequality (x != y)
 - Be careful! It’s a common mistake to use the assignment operator ( = ) when you intend to use the equality operator ( == ).
 
-## C Conditionals:
+## Conditionals
 
 - Conditional expressions allow your programs to make decisions and take different forks in the road, depending on the values of variables or user input.
 - C provides a few different ways to implement conditional expressions (also known as branches) in your programs, some of which likely look familiar from Scratch.
@@ -322,7 +322,7 @@ int x = (expr) ? 5 : 6;
 - These two snippets of code act identically.
 - The ternary operator (`? :`) is mostly a cute trick, but is useful for writing trivially short conditional branches. Be familiar with it, but know that you won’t need to write it if you don’t want.
 
-## C Loops:
+## Loops
 
 ```c
 while(true)
@@ -382,7 +382,7 @@ for (int i = 0; i < 10; i++)
 
 - Use when you want a loop to repeat a discrete number of times, though you may not know the number at the moment the program is compiled.
 
-## C Functions:
+## Functions
 
 - So far, all the programs we've been writing in the course have been written inside of main().
 - That hasn't been a problem yet, but it could be if our programs start to become unwieldy.
@@ -561,3 +561,191 @@ bool valid_triangle(float x, float y, float z)
     return true;
 }
 ```
+
+## Variable Scope
+
+- `Scope` is a characteristic of a variable that defines from which functions that variable may be accessed.
+  - `Local variables` can only be accessed within the functions in which they are created.
+  - `Global variables` can be accessed by any function in the program.
+- So far in the course, you've almost assuredly been working only with local variables.
+
+```c
+int main(void)
+{
+    int result = triple(x);
+}
+int triple(int x)
+{
+    return x * 3;
+}
+```
+
+- Here, `x` is `local` to the function triple(). No other function can refer to that variable, not even main(). `result` is `local` to main().
+- Global variables exist too. If a variable is declared outside of all functions, `any` function may refer to it.
+
+```c
+#include <stdio.h>
+
+float global = 0.5050;
+
+int main(void)
+{
+    triple();
+    printf("%f\n", global);
+}
+
+void triple(void)
+{
+    global *= 3;
+}
+```
+
+- Why does this distinction matter? For the most part, local variables in C are `passed by value` in function calls.
+- When a variable is passed by value, the `callee` receives a copy of the passed variable, not the variable itself.
+- That means that the variable in the `caller` is unchanged unless overwritten.
+- No effect on foo.
+
+```c
+int main(void)
+{
+    int foo = 4;
+    triple(foo);
+}
+
+int triple(int x)
+{
+    return x *= 3;
+}
+```
+
+- Overwrittes foo.
+
+```c
+int main(void)
+{
+    int foo = 4;
+    foo = triple(foo);
+}
+
+int triple(int x)
+{
+    return x *= 3;
+}
+```
+
+- Things can get particularly insidious if the same variable name appears in multiple functions, which is perfectly okay as long as the variables exist in different scopes.
+
+## Arrays
+
+- Arrays are a fundamental `data structure`, and they are extremely useful!
+- We use arrays to hold values of the same type at contiguous memory locations.
+- One way to analogize the notion of arrays is to think of your local post office, which usually has a large bank of post office boxes.
+
+| Arrays                                                                                           | Post Office Boxes                                                                                         |
+| ------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------- |
+| An `array` is a block of contiguous space in memory                                              | A `mail bank` is a large space on the wall of the post office...                                          |
+| ...which has been partitioned into small, identically-sized blocks of space called `elements`... | ...which has been partitioned into small, identically-sized blocks of space called `post office boxes`... |
+| ...each of which can store a certain amount of `data`...                                         | ...each of which can hold a certain amount of `mail`...                                                   |
+| ...all of the same data type such as `int` or `char`...                                          | ...all of a similar type such as `letters` or `small packages`...                                         |
+| ...and which can be accessed directly by an `index`.                                             | ...and which can be accessed directly by a `mailbox number`.                                              |
+
+- In C, the elements of an array are indexed starting from 0.
+  - This is one of the major reasons we count from zero!
+- If an array consists of `n` elements, the first element is located at index 0. The last element is located at index (`n`-1).
+- C is very lenient. It will not prevent you from going "out of bounds" of your array;be careful!
+- Array declarations
+
+```c
+type name[size];
+
+int student_grades[40];
+
+double menu_prices[8];
+```
+
+- The `type` is what kind of variable each element of the array will be.
+- The `name` is what you want to call your array.
+- The `size` is how many elements you would like your array to contain.
+
+- If you think of a single element of an array of type `data-type` the same as you would any other variable of type `data-type`(which, effectively, it is) then all the familiar operations make sense.
+
+```c
+bool truthtable[10];
+
+truthtable[2] = false;
+if (truthtable[7] == true)
+{
+    printf("TRUE\n");
+}
+truthtable[10] = true;
+```
+
+- When declaring and initializing an array simultaneously, there is a special syntax that may be used to fill up the array with its starting values.
+
+```c
+// instantiation syntax
+bool truthtable[3] = {false, true, true};
+
+// individual element syntax
+bool truthtable[3];
+truthtable[0] = false;
+truthtable[1] = true;
+truthtable[2] = true;
+```
+
+- Arrays can consist of more than a single dimension. You can have as many size specifiers as you wish.
+
+```c
+bool battleship[10][10];
+```
+
+- You can choose to think of this as either a 10x10 grid of cells.
+  - In memory though, it's really just a 100-element one-dimensional array.
+  - Multi-dimensional arrays are great `abstractions` to help visualize game boards or other complex representations.
+- While we can treat individual elements of arrays as variables, we cannot treat entire arrays themselves as variables.
+- We cannot, for instance, assign one array to another using the assignment operator. That is not legal C.
+- Instead, we must use a loop to copy over the elements one at a time.
+
+```c
+int foo[5] = {1, 2, 3, 4, 5};
+int bar[5];
+
+for(int j = 0; j < 5; j++)
+{
+    bar[j] = foo[j];
+}
+```
+
+- Recall that most variables in C are `passed by value` in function calls.
+- Arrays do not follow this rule. Rather, they are `passed by reference`. The callee receives the actual array, not a `copy` of it.
+
+## Comannd-Line Arguments
+
+- So far, all of your programs have begun pretty much the same way.
+
+```c
+int main(void)
+{
+
+}
+```
+
+- Since we've been collecting user input through in-program prompts, we haven't needed to modify this declaration of main().
+- If we want the user to provide data to our program before the program starts running, we need a new form.
+- To collect so called `command-line arguments` from the user, declare main as:
+
+```c
+int main(int argc, char *argv[])
+{
+
+}
+```
+
+- These two special arguments enable you to know what data the user provided at the command line and how much data they provided.
+- argc (argument count)
+  - This integer-type variable will store the `number` of command-line arguments the user typed when the program was executed.
+
+| command            | argc |
+| ------------------ | ---- |
+| ./greedy           | 1    |
+| ./greedy 1024 cs50 | 3    |
