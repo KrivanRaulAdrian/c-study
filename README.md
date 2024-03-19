@@ -749,3 +749,16 @@ int main(int argc, char *argv[])
 | ------------------ | ---- |
 | ./greedy           | 1    |
 | ./greedy 1024 cs50 | 3    |
+
+- argv (argument vector)
+  - This array of characters stores, one char per element, the actual text the user typed at the command-line when the program was executed.
+  - The first element of argv is always found at argv[0]. The last element of argv is always found at argv[argc-1].
+  - Let's assume the user executes the greedy program as follows
+    ./greedy 1024 cs50
+
+| argv indices | argv contents |
+| ------------ | ------------- |
+| argv[0]      | "./greedy"    |
+| argv[1]      | "1024"        |
+| argv[2]      | "cs50"        |
+| argv[3]      | ???           |
