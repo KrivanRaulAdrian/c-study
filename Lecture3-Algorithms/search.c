@@ -6,7 +6,7 @@ int main(void)
     int n;
 
     printf("Number: ");
-    while (scanf("%i", &n) != 1)
+    while (scanf("%d", &n) != 1)
     {
         printf("Invalid input. Please enter a number: ");
         while (getchar() != '\n')
