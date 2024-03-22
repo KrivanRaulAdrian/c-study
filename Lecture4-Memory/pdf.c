@@ -12,12 +12,14 @@ int main(int argc, char *argv[])
     }
 
     uint8_t buffer[4];
-    fread(buffer, 1, 4, f);
+    int blocks_read = fread(buffer, 1, 4, f);
 
     int n = 4;
     for (int i = 0; i < n; i++)
     {
         printf("%u\n", buffer[i]);
     }
+    printf("Blocks read: %u\n", blocks_read);
+
     fclose(f);
 }
