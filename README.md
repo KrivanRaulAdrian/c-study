@@ -1,6 +1,6 @@
-# C
+# CS50
 
-## Data Types
+## Data Types in C
 
 ### int
 
@@ -61,8 +61,9 @@
 - The string data type is used for variables that will store a series of characters, which programmers typically call a string.
 - Strings include things such as words, sentences, paragraphs, and the like.
 
-## Data types and size
+## Data types and size in C
 
+```c
 | Data Type | Size (Bytes) |
 | --------- | ------------ |
 | bool      | 1            |
@@ -72,8 +73,9 @@
 | double    | 8            |
 | char      | 1            |
 | string    | ?            |
+```
 
-## Creating a variable
+## Creating a variable in C
 
 - To bring a variable into existence, you need simply specify the data type of the variable and give it a name.
 
@@ -91,7 +93,7 @@ float sqrt2, sqrt3, pi;
 
 - In general, it’s good practice to only declare variables when you need them.
 
-## Using a variable
+## Using a variable in C
 
 - After a variable has been declared, it’s no longer necessary to specify that variable’s type. (In fact, doing so has some unintended consequences!)
 
@@ -109,7 +111,7 @@ int number = 17;   // initializing
 char letter = 'H';   // initializing
 ```
 
-## Operators
+## Operators in C
 
 Arithmetic Operators
 
@@ -141,7 +143,7 @@ x++;
 x--;
 ```
 
-## Boolean Expressions
+## Boolean Expressions in C
 
 - Boolean expressions are used in C for comparing values.
 - All Boolean expressions in C evaluate to one of two possible values - true or false.
@@ -150,34 +152,40 @@ x--;
 - In C, every nonzero value is equivalent to true, and zero is false.
 - Two main types of Boolean expressions: logical operators and relational operators.
 
-## Logical Operators
+## Logical Operators in C
 
 - Logical AND (&&) is true if and only if both operands are true, otherwise false.
 
+```c
 | x     | y     | (x && y) |
 | ----- | ----- | -------- |
 | true  | true  | true     |
 | true  | false | false    |
 | false | true  | false    |
 | false | false | false    |
+```
 
 - Logical OR (\|\|) is true if and only if at least one operand is true, otherwise false.
 
+```c
 | x     | y     | (x \|\| y) |
 | ----- | ----- | ---------- |
 | true  | true  | true       |
 | true  | false | true       |
 | false | true  | true       |
 | false | false | false      |
+```
 
 - Logical NOT (!) inverts the value of its operand.
 
+```c
 | x     | !x    |
 | ----- | ----- |
 | true  | false |
 | false | true  |
+```
 
-## Relational Operators
+## Relational Operators in C
 
 - These behave as you would expect them to, and appear syntactically similar to how you may recall them from elementary school.
   - Less than (x < y)
@@ -189,7 +197,7 @@ x--;
   - Inequality (x != y)
 - Be careful! It’s a common mistake to use the assignment operator ( = ) when you intend to use the equality operator ( == ).
 
-## Conditionals
+## Conditionals in C
 
 - Conditional expressions allow your programs to make decisions and take different forks in the road, depending on the values of variables or user input.
 - C provides a few different ways to implement conditional expressions (also known as branches) in your programs, some of which likely look familiar from Scratch.
@@ -322,7 +330,7 @@ int x = (expr) ? 5 : 6;
 - These two snippets of code act identically.
 - The ternary operator (`? :`) is mostly a cute trick, but is useful for writing trivially short conditional branches. Be familiar with it, but know that you won’t need to write it if you don’t want.
 
-## Loops
+## Loops in C
 
 ```c
 while(true)
@@ -382,7 +390,7 @@ for (int i = 0; i < 10; i++)
 
 - Use when you want a loop to repeat a discrete number of times, though you may not know the number at the moment the program is compiled.
 
-## Functions
+## Functions in C
 
 - So far, all the programs we've been writing in the course have been written inside of main().
 - That hasn't been a problem yet, but it could be if our programs start to become unwieldy.
@@ -562,7 +570,7 @@ bool valid_triangle(float x, float y, float z)
 }
 ```
 
-## Variable Scope
+## Variable Scope in C
 
 - `Scope` is a characteristic of a variable that defines from which functions that variable may be accessed.
   - `Local variables` can only be accessed within the functions in which they are created.
@@ -635,7 +643,7 @@ int triple(int x)
 
 - Things can get particularly insidious if the same variable name appears in multiple functions, which is perfectly okay as long as the variables exist in different scopes.
 
-## Arrays
+## Arrays in C
 
 - Arrays are a fundamental `data structure`, and they are extremely useful!
 - We use arrays to hold values of the same type at contiguous memory locations.
@@ -719,7 +727,7 @@ for(int j = 0; j < 5; j++)
 - Recall that most variables in C are `passed by value` in function calls.
 - Arrays do not follow this rule. Rather, they are `passed by reference`. The callee receives the actual array, not a `copy` of it.
 
-## Comannd-Line Arguments
+## Comannd-Line Arguments in C
 
 - So far, all of your programs have begun pretty much the same way.
 
@@ -745,10 +753,12 @@ int main(int argc, char *argv[])
 - argc (argument count)
   - This integer-type variable will store the `number` of command-line arguments the user typed when the program was executed.
 
+```c
 | command            | argc |
 | ------------------ | ---- |
 | ./greedy           | 1    |
 | ./greedy 1024 cs50 | 3    |
+```
 
 - argv (argument vector)
   - This array of characters stores, one char per element, the actual text the user typed at the command-line when the program was executed.
@@ -756,14 +766,16 @@ int main(int argc, char *argv[])
   - Let's assume the user executes the greedy program as follows
     ./greedy 1024 cs50
 
+```c
 | argv indices | argv contents |
 | ------------ | ------------- |
 | argv[0]      | "./greedy"    |
 | argv[1]      | "1024"        |
 | argv[2]      | "cs50"        |
 | argv[3]      | ???           |
+```
 
-## Linear Search
+## Linear Search in C
 
 - In linear search, the idea of the algorithm is to iterate across the array from left to right, searching for a specified element.
 
@@ -780,7 +792,7 @@ In pseudocode:
 - `Worst-case scenario`: O(n)
 - `Best-case scenario` : Ω(1)
 
-## Binary Search
+## Binary Search in C
 
 - In binary search, the idea of the algorithm is to divide and conquer, reducing the search area by half each time, trying to find a target number.
   - In order to leverage this power however, our array must first be sorted, else we cannot make assumptions about the array's contents.
@@ -800,7 +812,7 @@ In pseudocode:
 - `Worst-case scenario`: O(log n)
 - `Best-case scenario`: Ω(1)
 
-## Bubble Sort
+## Bubble Sort in C
 
 - In bubble sort, the idea of the algorithm is to move higher valued elements generally towards the right and lower value elements generally to the left.
 
@@ -819,7 +831,7 @@ In pseudocode:
 - `Worst-case scenario`: O(n^2)
 - `Best-case scenario`: Ω(n)
 
-## Selection Sort
+## Selection Sort in C
 
 - In selection sort, the idea of the algorithm is to find the smallest unsorted element and add it to the end of the sorted list.
 
@@ -836,7 +848,7 @@ In pseudocode:
 - `Worst-case scenario`: O(n^2)
 - `Best-case scenario`: Ω(n^2)
 
-## Recursion
+## Recursion in C
 
 - We might describe an implementation of an algorithm as being particularly `elegant` if it solves a problem in a way that is both interesting and easy to visualize.
 - The technique of `recursion` is a very common way to implement such an `elegant` solution.
@@ -934,7 +946,7 @@ int fact2(int i)
   - Otherwise, if `n` is even, repeat this process on `n/2`.
   - Otherwise, if `n` is odd, repeat this process n `3n+1`.
 
-## Merge Sort
+## Merge Sort in C
 
 - In merge sort, the idea of the algorithm is to sort smaller arrays and then combine those arrays together (merge them) in sorted order.
 - Merge sort leverages something called `recursion`.
@@ -950,3 +962,100 @@ In pseudocode:
 
 - `Worst-case scenario`: O(n log n)
 - `Best-case scenario`: Ω(n log n)
+
+## Hexadecimal in C
+
+- Most Western cultures use the decimal system, aka `base-10`, to represent numeric data.
+
+```c
+0 1 2 3 4 5 6 7 8 9
+```
+
+- As we know, computers use the binary system, aka `base-2`, to represent numeric (and indeed all data).
+
+```c
+0 1
+```
+
+- As computer scientists, it's useful to be able to express data the same way the computer does.
+- The problem, of course, is that trying to parse a huge chain of 0s and 1s can be quite difficult.
+
+- The `hexadecimal system`, aka `base-16`, is a much more concise way to express the data on a computer's system.
+
+```c
+0 1 2 3 4 5 6 7 8 9 A B C D E F
+```
+
+- Hexadecimal makes this mapping easy because a group of four binary digits (bits) has 16 different combinations, and each of those combinations maps to a single hexadecimal digit.
+
+```c
+| Decimal | Binary | Hexadecimal |
+| ------- | ------ | ----------- |
+| 0       | 0000   | 0x0         |
+| 1       | 0001   | 0x1         |
+| 2       | 0010   | 0x2         |
+| 3       | 0011   | 0x3         |
+| 4       | 0100   | 0x4         |
+| 5       | 0101   | 0x5         |
+| 6       | 0110   | 0x6         |
+| 7       | 0111   | 0x7         |
+| 8       | 1000   | 0x8         |
+| 9       | 1001   | 0x9         |
+| 10      | 1010   | 0xA         |
+| 11      | 1011   | 0xB         |
+| 12      | 1100   | 0xC         |
+| 13      | 1101   | 0xD         |
+| 14      | 1110   | 0xE         |
+| 15      | 1111   | 0xF         |
+```
+
+- Just like binary has place values (1, 2 ,4, 8...) and decimal does too (1, 10, 100, 1000...), so does hexadecimal.
+
+- To convert a binary number to hexadecimal, group four binary digits (bits) together from right to left.
+
+```c
+0100 0110 1010 0010 1011 1001 0011 1101 = 0x46A2B93D
+```
+
+## Pointers in C
+
+- Pointers provide an alternative way to pass data between functions.
+  - Recall that up to this point, we have passed all data `by value`, with one exception.
+  - When we pass data by value, we only pass a copy of that data.
+- If we use pointers instead, we have the power to pass the actual variable itself.
+
+  - That means that a change that is made in one function `can` impact what happens in a different function.
+  - Previously, it wasn't possible!
+
+- Every file on your computer lives on your disk drive, be it a hard disk drive (HDD) or a solid-state drive (SSD).
+- Disk drivers are just storage space; we can't directly work there. Manipulation and use of data can only take place in RAM, so we have to move data there.
+- Memory is basically a huge array of 8-bit wide bytes.
+  - 512 MB, 1GB, 2GB, 4GB...
+
+```c
+| Data Type       | Size (Bytes) |
+| --------------- | ------------ |
+| int             | 4            |
+| char            | 1            |
+| float           | 4            |
+| double          | 8            |
+| long long       | 8            |
+| string          | ???          |
+```
+
+- Back to this idea of memory as a big array of byte-sized cells.
+- Recall from our discussion of arrays that they not only are useful for storage of information but also for so-called `random access`.
+  - We can access individual elements of the array by indicating which index location we want.
+- Similarly, each location in memory has an `address`.
+- There's only one critical thing to remember as we start working with pointers:
+  `POINTERS ARE JUST ADDRESSES`
+
+```c
+int k;    // ------|
+          //       |-------->  k = 5 ---------------------|
+k = 5;    // ------|                                      |
+          //                                              | ----------> pk ----------> k
+int *pk;  // ------|                                      |
+          //       |--------> pk = 0x80C74820 ------------|
+pk = &k;  // ------|
+```
