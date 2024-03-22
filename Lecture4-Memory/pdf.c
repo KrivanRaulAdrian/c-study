@@ -12,7 +12,9 @@ int main(int argc, char *argv[])
     }
 
     uint8_t buffer[4];
-    int blocks_read = fread(buffer, 1, 4, f);
+    int chunk_size = 1;
+    int chunk_number = 4;
+    int blocks_read = fread(buffer, chunk_size, chunk_number, f);
 
     int n = 4;
     for (int i = 0; i < n; i++)
