@@ -4,12 +4,12 @@ void swap(int *a, int *b);
 
 int main(void)
 {
-    int x = 1;
-    int y = 2;
+    int a = 10;
+    int b = 50;
 
-    printf("x is %u, y is %u\n", x, y);
-    swap(&x, &y);
-    printf("x is %u, y is %u\n", x, y);
+    printf("a is %u, b is %u\n", a, b);
+    swap(&a, &b);
+    printf("a is %u, b is %u\n", a, b);
 }
 
 void swap(int *a, int *b)
