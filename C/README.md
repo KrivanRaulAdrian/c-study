@@ -1747,3 +1747,156 @@ trie;
 - To search for an element in the trie, use successive digits to navigate from the root, and if you can make it to the end without hitting a dead end (a NULL pointer), you've found it.
 
 ## Queues in C
+
+- A queue is a special type of structure that can be used to maintain data in an organized way.
+- This data structure is commonly implemented in one of two ways: as an `array` or as a `linked list`.
+- In either case, the important rule is that when data is added to the queue, it is tacked onto the end, and so if an element needs to be removed, the element at the front is the only element that can legally be removed.
+
+  - `First in, first out (FIFO)`
+
+- There are only two operations that may legally be performed on a queue.
+
+  - `Enqueue`: Add a new element to the end of the queue.
+  - `Dequeue`: Remove the oldest element from the front of the queue.
+
+- Array-based implementation
+
+```c
+typedef struct _queue
+{
+  VALUE array[CAPACITY];
+  int front;
+  int size;
+}
+queue;
+
+queue q;
+q.front = 0;
+q.size = 0;
+```
+
+- In the general case, `enqueue()` needs to:
+  - Accept a pointer to the queue.
+  - Accept data of type VALUE to be added to the queue.
+  - Add that data to the queue at the end of the queue.
+  - Change the size of the queue.
+
+```c
+void enqueue(queue *q, VALUE data);
+
+enqueue(&q, 28);
+enqueue(&q, 33);
+enqueue(&q, 19);
+```
+
+- In the general case, `dequeue()` needs to:
+  - Accept a pointer to the queue.
+  - Change the location of the front of the queue.
+  - Decrease the size of the queue.
+  - Return the value that was removed from the queue.
+
+```c
+VALUE dequeue(queue *q);
+
+int x = dequeue(&q);
+enqueue(&q, 40);
+```
+
+- Linked list-based implementation
+
+```c
+typedef struct _queue
+{
+  VALUE val;
+  struct _queue *prev;
+  struct _queue *next;
+}
+queue;
+```
+
+- Just make sure to always maintain pointers to the head `and` tail of the linked list! (probably global)
+
+- To `enqueue`:
+
+  - Dynamically allocate a new node;
+  - Set its next pointer to NULL, set its prev pointer to the tail;
+  - Set the tail's next pointer to the new node;
+  - Move the tail pointer to the newly-created node.
+
+- To `dequeue`:
+  - Traverse the linked list to its second element (if it exists);
+  - Free the head of the list;
+  - Move the head pointer to the (former) second element;
+  - Make that node's prev pointer point to NULL.
+
+## Stacks (Data Structure) in C
+
+- A stack is a special type of structure that can be used to maintain data in an organized way.
+- This data structure is commonly implemented in one of two ways: as an `array` or as a `linked list`.
+- In either case, the important rule is that when data is added to the stack, it sits `"on top"`, and so if an element needs to be removed, the most recently added element is the only element that can legally be removed.
+
+  - `Last in, first out (LIFO)`.
+
+- There are only two operations that may legally be performed on a stack.
+
+  - `Push`: Add a new element to the top of the stack.
+  - `Pop`: Remove the most recently-added element from the top of the stack.
+
+- Array-based implementation
+
+```c
+typedef struct _stack
+{
+  VALUE array[CAPACITY];
+  int top;
+}
+stack;
+
+
+stack s;
+s.top = 0;
+```
+
+- In the general case, `push()` needs to:
+  - Accept a pointer to the stack.
+  - Accept data of type `VALUE` to be added to the stack.
+  - Add that data to the stack at the top of the stack.
+  - Change the location of the top of the stack.
+
+```c
+void push(stack *s, VALUE data);
+
+stack s;
+s.top = 0;
+push(&s, 28);
+push(&s, 33);
+push(&s, 19);
+```
+
+- In the general case, `pop()` needs to:
+  - Accept a pointer to the stack.
+  - Change the location of the top of the stack.
+  - Return the value that was removed from the stack.
+
+```c
+VALUE pop(stack *s);
+
+int x = pop(&s);
+push(&s, 40);
+```
+
+- Linked list-based implementation
+
+```c
+typedef struct _stack
+{
+  VALUE val;
+  struct _stack *next;
+}
+stack;
+```
+
+- Just make sure to always maintain a pointer to the head of the linked list!
+- To `push`, dynamically allocate a new node, set its next pointer to point to the current head of the list, then move the head pointer to the newly-created node.
+
+- To `pop`, traverse the linked list to its second element (if it exists), free the head of the list, then move the head pointer to the (former) second element.
