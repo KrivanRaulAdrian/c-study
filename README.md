@@ -1,1 +1,1 @@
-# CS50 Study
+# C Study

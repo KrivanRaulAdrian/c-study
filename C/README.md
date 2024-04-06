@@ -1,4 +1,4 @@
-# CS50 C
+# C
 
 ## Data Types in C
 
@@ -13,7 +13,6 @@
 ### unsigned int
 
 - unsigned is a qualifier that can be applied to certain types (including int), which effectively doubles the positive range of variables of that type, at the cost of disallowing any negative values.
-- You’ll occasionally have use for unsigned variables in CS50.
 
 **Unsigned Integer Range**
 0 65,535
@@ -745,22 +744,22 @@ int main(int argc, char *argv[])
 - argc (argument count)
   - This integer-type variable will store the `number` of command-line arguments the user typed when the program was executed.
 
-| command            | argc |
-| ------------------ | ---- |
-| ./greedy           | 1    |
-| ./greedy 1024 cs50 | 3    |
+| command         | argc |
+| --------------- | ---- |
+| ./greedy        | 1    |
+| ./greedy 1024 c | 3    |
 
 - argv (argument vector)
   - This array of characters stores, one char per element, the actual text the user typed at the command-line when the program was executed.
   - The first element of argv is always found at argv[0]. The last element of argv is always found at argv[argc-1].
   - Let's assume the user executes the greedy program as follows
-    ./greedy 1024 cs50
+    ./greedy 1024 C
 
 | argv indices | argv contents |
 | ------------ | ------------- |
 | argv[0]      | "./greedy"    |
 | argv[1]      | "1024"        |
-| argv[2]      | "cs50"        |
+| argv[2]      | "c"           |
 | argv[3]      | ???           |
 
 ## Linear Search in C
@@ -1139,7 +1138,7 @@ struct car mycar;
 
 // field accessing
 mycar.year = 2011;
-mycar.plate = "CS50";
+mycar.plate = "C";
 mycar.odometer = 50505;
 ```
 
@@ -1151,7 +1150,7 @@ car_t mycar;
 
 // field accessing
 mycar.year = 2011;
-mycar.plate = "CS50";
+mycar.plate = "C";
 mycar.odometer = 50505;
 ```
 
@@ -1432,7 +1431,7 @@ struct car mycar;
 
 // field accessing
 mycar.year = 2011;
-strcpy(mycar.plate, "CS50");
+strcpy(mycar.plate, "C");
 mycar.odometer = 50505;
 ```
 
@@ -1445,7 +1444,7 @@ struct car *mycar = malloc(sizeof(struct car));
 
 // field accessing
 (*mycar).year = 2011;
-strcpy((*mycar).plate, "CS50");
+strcpy((*mycar).plate, "C");
 (*mycar).odometer = 50505;
 ```
 
@@ -1460,7 +1459,7 @@ struct car *mycar = malloc(sizeof(struct car));
 
 // field accessing
 mycar->year = 2011;
-strcpy(mycar->plate), "CS50";
+strcpy(mycar->plate), "C";
 mycar->odometer = 50505;
 ```
 
