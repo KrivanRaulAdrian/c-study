@@ -1,13 +1,6 @@
 #include <stdio.h>
 
-void fizz_buzz();
-
 int main(void)
-{
-    fizz_buzz();
-}
-
-void fizz_buzz()
 {
     int n = 100;
 
@@ -30,4 +23,6 @@ void fizz_buzz()
             printf("%d:\n", i);
         }
     }
+
+    return 0;
 }
