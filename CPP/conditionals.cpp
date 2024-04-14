@@ -1,21 +1,19 @@
 #include <iostream>
 
-using namespace std;
-
 int main()
 {
     int age = 18;
 
-    cout << "Please enter your age: ";
-    cin >> age;
+    std::cout << "Please enter your age: ";
+    std::cin >> age;
 
     if (age >= 18)
     {
-        cout << "You are old enough, you can enter" << endl;
+        std::cout << "You are old enough, you can enter" << std::endl;
     }
     else
     {
-        cout << "You are too young, you cannot enter" << endl;
+        std::cout << "You are too young, you cannot enter" << std::endl;
     }
 
     return 0;

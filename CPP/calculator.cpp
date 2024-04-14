@@ -1,39 +1,37 @@
 #include <iostream>
 #include <string>
 
-using namespace std;
-
 int main()
 {
-    float x;
-    float y;
-    string operand;
+    double x;
+    double y;
+    std::string operand;
 
-    cout << "Enter an operand (+, -, *, /): ";
-    cin >> operand;
+    std::cout << "Enter an operand (+, -, *, /): ";
+    std::cin >> operand;
 
-    cout << "Enter x: ";
-    cin >> x;
+    std::cout << "Enter x: ";
+    std::cin >> x;
 
-    cout << "Enter y: ";
-    cin >> y;
+    std::cout << "Enter y: ";
+    std::cin >> y;
 
     switch (operand[0])
     {
     case '+':
-        cout << x + y << endl;
+        std::cout << x + y << std::endl;
         break;
     case '-':
-        cout << x - y << endl;
+        std::cout << x - y << std::endl;
         break;
     case '*':
-        cout << x * y << endl;
+        std::cout << x * y << std::endl;
         break;
     case '/':
-        cout << x / y << endl;
+        std::cout << x / y << std::endl;
         break;
     default:
-        cout << "Invalid operand" << endl;
+        std::cout << "Invalid operand" << std::endl;
     }
 
     return 0;
