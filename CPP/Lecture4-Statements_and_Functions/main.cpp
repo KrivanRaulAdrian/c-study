@@ -4,6 +4,7 @@
 int add_numbers(int first_number, int second_number);
 std::string name(std::string first_name, std::string last_name);
 int subtract_numbers(int first_number, int second_number);
+int multiply_numbers(int first_number, int second_number);
 
 int main()
 {
@@ -29,6 +30,8 @@ int main()
 
     std::cout << "Difference: " << subtract_numbers(23, 8) << std::endl;
 
+    std::cout << "Product: " << multiply_numbers(23, 8) << std::endl;
+
     return 0;
 }
 
@@ -48,4 +51,10 @@ int subtract_numbers(int first_number, int second_number)
 {
     int diff = first_number - second_number;
     return diff;
+}
+
+int multiply_numbers(int first_number, int second_number)
+{
+    int product = first_number * second_number;
+    return product;
 }
