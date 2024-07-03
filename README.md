@@ -1,1 +1,1 @@
-# C and CPP studies
+# C studies
