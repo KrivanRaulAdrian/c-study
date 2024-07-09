@@ -1,1 +1,1 @@
-# C studies
+# C and C++ studies
